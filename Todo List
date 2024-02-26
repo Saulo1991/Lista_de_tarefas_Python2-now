@@ -1,0 +1,61 @@
+tarefas = []
+
+def adicionar():
+    nova_tarefa = input("Digite sua tarefa: ")
+    tarefas.append(nova_tarefa)
+
+def visualizar():
+    print("Tarefas:")
+    for i, tarefa in enumerate(tarefas, 1):
+        print(f"{i}. {tarefa}")
+
+def marcar_concluida():
+    visualizar()
+    tarefa = input("Digite o número da tarefa concluída: ")
+    try:
+        index = int(tarefa) - 1
+        if 0 <= index < len(tarefas):
+            print(f"A tarefa '{tarefas[index]}' foi marcada como concluída.")
+            tarefas.pop(index)
+        else:
+            print("Número de tarefa inválido.")
+    except ValueError:
+        print("Por favor, insira um número válido.")
+
+def excluir_tarefa():
+    visualizar()
+    tarefa = input("Digite o número da tarefa a ser excluída: ")
+    try:
+        index = int(tarefa) - 1
+        if 0 <= index < len(tarefas):
+            print(f"A tarefa '{tarefas[index]}' foi excluída.")
+            tarefas.pop(index)
+        else:
+            print("Número de tarefa inválido.")
+    except ValueError:
+        print("Por favor, insira um número válido.")
+
+while True:
+    print("\nEscolha sua opção para cada tarefa: ")
+    print("1. Adicionar tarefa")
+    print("2. Visualizar tarefas")
+    print("3. Marcar tarefa como concluída")
+    print("4. Excluir tarefa")
+    print("5. Sair")
+
+    opcao = input("Digite um número para cada opção: ")
+
+    if opcao == '1':
+        adicionar()
+        print("Tarefa adicionada com sucesso.")
+    elif opcao == '2':
+        visualizar()
+    elif opcao == '3':
+        marcar_concluida()
+    elif opcao == '4':
+        excluir_tarefa()
+    elif opcao == '5':
+        print("Saindo...")
+        break
+    else:
+        print("Opção inválida. Por favor, escolha uma opção válida.")
